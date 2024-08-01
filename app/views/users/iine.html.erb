@@ -1,0 +1,85 @@
+<div class="iine-zentai">
+    <div class="iine-top">
+        <h2>ユーザーがいいねした投稿一覧</h2>
+        <h3><%= link_to "マイページトップへ", user_path(current_user.id) %></h3>
+    </div>
+
+
+    <div class="kontena">
+        <% @user.liked_cleans.each do |t| %>
+            <div class="aaa" >
+                <div class="post">
+                    <div class="youso-info">
+                        <h2>メーカー：<%= t.maker %></h2>
+                        <br>
+                        <h2>型番：<%= t.name %></h2>
+                        <br>
+                        <h2>価格: ￥<%= t.cost %></h2>
+                        <div class="kensaku-kuwasiku">
+                            <%= link_to "詳しく", clean_path(t.id) %>
+                        </div>
+                        <div class="kensaku-like">
+                            <% if user_signed_in? %>
+                                <% if current_user.already_liked?(t) %>
+                                    <%= link_to clean_like_path(id: t.id, clean_id: t.id), method: :delete do %>
+                                        <i class="fas fa-heart"></i><%= t.likes.count %>
+                                    <% end %>
+                                <% else %>
+                                    <%= link_to clean_likes_path(id: t.id, clean_id: t.id), method: :post do %>
+                                        <i class="far fa-heart"></i><%= t.likes.count %>
+                                    <% end %>
+                                <% end %>
+                            <% else %>
+                                <i class="far fa-heart"></i><%= t.likes.count %>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class = "star">  
+                        <div>  
+                            <br>
+                            <br>
+                            <h2>総合評価：
+                                <span class="star-rating">
+                                    <span class="star-rating-front" style="width: <%= getPercent(t.overall) %>%;">★★★★★</span>
+                                    <span class="star-rating-back">★★★★★</span>
+                                </span> 
+                            </h2>
+                        </div>  
+                        <div>
+                            <h3>吸引力:
+                            <span class="star-rating">
+                                <span class="star-rating-front" style="width: <%= getPercent(t.power) %>%;">★★★★★</span>
+                                <span class="star-rating-back">★★★★★</span>
+                            </span>
+                            </h3>
+                        </div>
+                        <div>
+                            <h3>持続力:
+                            <span class="star-rating">
+                                <span class="star-rating-front" style="width: <%= getPercent(t.time) %>%;">★★★★★</span>
+                                <span class="star-rating-back">★★★★★</span>
+                            </span>
+                            </h3>
+                        </div>
+                        <div>
+                            <h3>手入れ:
+                            <span class="star-rating">
+                                <span class="star-rating-front" style="width: <%= getPercent(t.care) %>%;">★★★★★</span>
+                                <span class="star-rating-back">★★★★★</span>
+                            </span>
+                            </h3>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="toukougazou">
+                        <%= image_tag t.image_url, size: "130x180" if t.image? %>
+                    </div>
+                    <br>
+                </div>
+                <% if user_signed_in? && current_user.id == t.user_id %>
+                    <%= button_to "削除", clean_path(t.id), method: :delete %>
+                <%end%>
+            </div>
+        <% end %>
+    </div>
+</div>
