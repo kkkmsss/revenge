@@ -27,6 +27,8 @@ class CleansController < ApplicationController
     
     def show
         @clean = Clean.find(params[:id])
+        @comments = @clean.comments
+        @comment = Comment.new
     end
 
     def edit

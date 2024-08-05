@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_08_01_031830) do
+ActiveRecord::Schema.define(version: 2024_08_04_091307) do
 
   create_table "cleans", force: :cascade do |t|
     t.string "maker"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 2024_08_01_031830) do
     t.integer "power"
     t.integer "care"
     t.integer "time"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id", null: false
+    t.integer "clean_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["clean_id"], name: "index_comments_on_clean_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -52,6 +62,8 @@ ActiveRecord::Schema.define(version: 2024_08_01_031830) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "cleans"
+  add_foreign_key "comments", "users"
   add_foreign_key "likes", "cleans"
   add_foreign_key "likes", "users"
 end

@@ -16,11 +16,6 @@
         <br>
         <p><%= @clean.about %></p>
         <br>
-        <p>タグ</p>
-        <% @clean.tags.each do |tag| %>
-            <%= tag.name %>
-        <% end %>
-        <br>
         <% if user_signed_in? %>
             <% if current_user.already_liked?(@clean) %>
                 <%= button_to clean_like_path(@clean), method: :delete do %>
@@ -34,24 +29,41 @@
         <% else %>
             <p>いいねの数 = </p><%= @clean.likes.count %>
         <% end %>
+        <br>
+        <br>
+        <br>
         <%= link_to "編集する", edit_clean_path(@clean.id) %>
     </div>
+    <br>
+    <br>
+    <br>
     <div class="comment-wrapper">
-        <p>コメント一覧</p>
-        <% @comments.each do |c| %>
-            <div>
-                <%= c.user.email unless c.user.blank? %>
-                <br>
-                <%= c.content %>
-            </div>
-            </br>
-        <% end %>
-        <%= form_with(model: [@clean, @comment], local: true) do |f| %>
-            <%= f.text_area :content %>
-            <%= button_tag type: "submit" do %>
-                <i class="far fa-comments"></i> コメントする
-            <% end %>   
-        <% end %>
+        <button id="toggle-comments" class="btn btn-secondary">
+            コメントをみる！
+        </button>
+        <br>
+        <br>
+        <br>
+        <div id="comments" style="display: none;">
+            <p>コメント一覧</p>
+            <% @comments.each do |c| %>
+                <div>
+                    <%= c.user.name unless c.user.blank? %>さんのコメント
+                    <br>
+                    <%= c.content %>
+                </div>
+                </br>
+            <% end %>
+
+            <% if user_signed_in? %>
+                <%= form_with(model: [@clean, @comment], local: true) do |f| %>
+                    <%= f.text_area :content %>
+                    <%= button_tag type: "submit" do %>
+                        <i class="far fa-comments"></i> コメントする！
+                    <% end %>   
+                <% end %>
+            <% end %>
+        </div>
     </div>
-    <%= link_to "一覧に戻る", cleans_kensaku_path %>
+    <%= link_to "一覧に戻る", cleans_path %>
 </div>
