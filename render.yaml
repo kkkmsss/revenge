@@ -1,6 +1,6 @@
 databases:
   - name: revenge_DB
-    databaseName: revenge_db
+    databaseName: revenge_db_z71k
     user: revenge
     region: singapore
 

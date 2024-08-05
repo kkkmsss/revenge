@@ -52,6 +52,6 @@ class CleansController < ApplicationController
     
     private
     def clean_params
-        params.require(:clean).permit(:genre, :cost, :name, :about, :image, :overall, :light, :power, :care, :time, :tag_ids)
+        params.require(:clean).permit(:maker, :genre, :cost, :name, :about, :image, :overall, :light, :power, :care, :time, :tag_ids)
     end
 end
