@@ -37,10 +37,7 @@
             <%= f.label :製品に関する詳細を入力  %>
             <%= f.text_area :about %>
         </div>
-        <h5>タグを選択:</h5>
-        <div class='form-group'>
-            <%= f.collection_select :tag_ids, Tag.all, :id, :name, include_blank: "タグを選択してください"  %>
-        </div>
+        
         <div class="field">
             <%= f.label :価格  %>
             <%= f.text_field :cost, :size => 30 %>

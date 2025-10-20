@@ -28,3 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //= require toggle_comments
+
+require("chartkick")
+require("chart.js")

@@ -6,6 +6,9 @@ class CleansController < ApplicationController
 
     def sindan
     end
+
+    def satoko
+    end
     
     def index
         @cleans = Clean.all

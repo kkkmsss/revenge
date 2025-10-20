@@ -157,3 +157,43 @@ header ul {
     color: goldenrod;
     transform: translateY(-7px);
 }
+
+.rakiyae{
+    height: 600px;
+}
+
+.circle-text {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    margin: 100px auto;
+    border-radius: 35%;
+    overflow: hidden;
+
+    h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font: 26px Monaco, MonoSpace;
+        width: 100%;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    h1 span {
+        position: absolute;
+        transform-origin: bottom center;
+    }
+
+    .char1 { transform: rotate(-90deg) translateY(-90px) rotate(45deg); }
+    .char2 { transform: rotate(-70deg) translateY(-90px) rotate(35deg); }
+    .char3 { transform: rotate(-50deg) translateY(-90px) rotate(25deg); }
+    .char4 { transform: rotate(-30deg) translateY(-90px) rotate(15deg); }
+    .char5 { transform: rotate(-10deg) translateY(-90px) rotate(5deg); }
+    .char6 { transform: rotate(10deg) translateY(-90px) rotate(-5deg); }
+    .char7 { transform: rotate(30deg) translateY(-90px) rotate(-35deg); }
+    .char8 { transform: rotate(50deg) translateY(-90px) rotate(-45deg); }
+    .char9 { transform: rotate(70deg) translateY(-90px) rotate(-55deg); }
+    .char10 { transform: rotate(90deg) translateY(-90px) rotate(-65deg); }
+}

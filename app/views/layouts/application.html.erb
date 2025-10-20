@@ -8,17 +8,16 @@
       <script src="https://kit.fontawesome.com/c1b1cd6975.js" crossorigin="anonymous"></script>
       <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+      
     </head>
     
     <body>
       <header>
         <div class="home">
-
           <%= link_to root_path do %>
             <%= image_tag 'rogooo.png', alt: "Clean仮", class: "rogo" %>
           <%end%>
         </div>
-
         <div class="header-list">
           <div class="sindan">
             <h1><%= link_to "掃除機診断をしてみる", cleans_sindan_path %></h1>
@@ -29,7 +28,6 @@
             <%end%></h1>
           </div>
         </div>
-        
         <div class="migi">
           <div class="index">
             <h1><%= link_to cleans_path, class: "btn btn btn-secondary text-white", method: :get do %>

@@ -11,7 +11,8 @@
 
 .top-block{
     font-size: 160px;
-    text-align: center;position: relative;
+    text-align: center;
+    position: relative;
     opacity: 0; 
     /* transform: translateY(100%);  */
     animation: fadeInFromBottom 2.2s forwards; 
@@ -238,6 +239,7 @@ footer p{
     color: gold;
     transform: translateY(-10px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    
 }
 
 .sindan :hover{
